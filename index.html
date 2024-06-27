@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR Service</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Medical OCR 💊</h1>
+            <p>Assist you in reading medical prescription.</p>
+        </header>
+
+        <main>
+            <form id="uploadForm">
+                <input type="file" id="imageInput" accept="image/*" required onchange="previewImage(event)">
+                <button type="submit">Upload Image</button>
+            </form>
+
+            <div id="imagePreview" class="image-preview">
+                <canvas id="previewCanvas"></canvas>
+            </div>
+
+            <div id="result"></div>
+        </main>
+
+        <!-- <footer>
+            <p>&copy; 2024 Medical OCR Service. All rights reserved.</p>
+        </footer> -->
+    </div>
+
+    <script src="ocr.js"></script>
+    <script>
+        // Function to preview selected image and resize if necessary
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.getElementById('previewCanvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    // Resize image proportionally if larger than 500x500 pixels
+                    const maxDimension = 500;
+                    let width = img.width;
+                    let height = img.height;
+                    
+                    if (width > maxDimension || height > maxDimension) {
+                        if (width > height) {
+                            height *= maxDimension / width;
+                            width = maxDimension;
+                        } else {
+                            width *= maxDimension / height;
+                            height = maxDimension;
+                        }
+                    }
+                    
+                    canvas.width = width;
+                    canvas.height = height;
+                    ctx.drawImage(img, 0, 0, width, height);
+                    
+                    document.getElementById('imagePreview').style.display = 'block'; // Display image preview
+                };
+                img.src = event.target.result;
+            };
+            
+            if (file) {
+                reader.readAsDataURL(file); // Convert image to data URL
+            }
+        }
+    </script>
+</body>
+</html>

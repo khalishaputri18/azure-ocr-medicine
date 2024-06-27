@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Ensure full height for body and html */
+    overflow-y: auto; /* Enable vertical scrolling for the body */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Light background */
+    margin: 0; /* Ensure no default margins */
+    padding: 0; /* Ensure no default padding */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the top */
+}
+
+.container {
+    width: 100%;
+    max-width: 600px; /* Adjust as needed */
+    margin: 20px auto; /* Center content and add top margin */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    background-color: #0077cc; /* Medical blue */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%; /* Ensure full width */
+    box-sizing: border-box; /* Include padding in width calculation */
+    border-radius: 8px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+main {
+    padding: 20px 0;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    background-color: #0077cc; /* Medical blue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #005ea2; /* Darker shade of blue on hover */
+}
+
+#imagePreview, #result {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#imagePreview canvas {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%; /* Ensure image preview is responsive */
+}
+
+#result p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
